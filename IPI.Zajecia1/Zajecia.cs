@@ -30,5 +30,36 @@ namespace IPI.Zajecia1
             Console.WriteLine("Godzina rozpoczęcia: " + GodzinaRozpoczecia);
             Console.WriteLine("Godzina zakończenia: " + GodzinaZakonczenia);
         }
+
+        public static Zajecia WczytajDaneZajec()
+        {
+            Zajecia noweZajecia = new Zajecia();
+            Console.WriteLine("Podaj nazwę zajęć");
+            string nazwa = Console.ReadLine();
+            Console.WriteLine("Podaj salę");
+            string sala = Console.ReadLine();
+            Console.WriteLine("Podaj datę");
+            string data = Console.ReadLine();
+            Console.WriteLine("Podaj godzinę");
+            string godzinaRozpoczecia = Console.ReadLine();
+            Console.WriteLine("Ile trwają zajęcia?");
+            string czasTrwania = Console.ReadLine();
+
+            noweZajecia.Nazwa = nazwa;
+            noweZajecia.Sala = sala;
+            noweZajecia.GodzinaRozpoczecia = DateTime.Parse(data);
+
+            int hour = int.Parse(godzinaRozpoczecia.Split(':')[0]);
+            int minute = int.Parse(godzinaRozpoczecia.Split(':')[1]);
+
+            noweZajecia.GodzinaRozpoczecia.AddHours(hour);
+            noweZajecia.GodzinaRozpoczecia.AddMinutes(minute);
+
+            hour = int.Parse(czasTrwania.Split(':')[0]);
+            minute = int.Parse(czasTrwania.Split(':')[1]);
+
+            noweZajecia.Dlugosc = new TimeSpan(hour, minute, 0);
+            return noweZajecia;
+        }
     }
 }
