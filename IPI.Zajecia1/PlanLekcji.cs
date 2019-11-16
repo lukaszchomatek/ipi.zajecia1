@@ -32,7 +32,6 @@ namespace IPI.Zajecia1
                         new DateTime(2019, 11, 16, 13, 15, 0)
                 };
 
-            ZajeciaInne inne = new ZajeciaInne("Sprzątanie", "dom");
             wprowadzenieDoVS.WypiszZajecia();
             wprowadzenieDoVSCz2.WypiszZajecia();
             Console.ReadKey();

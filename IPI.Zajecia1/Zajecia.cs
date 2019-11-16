@@ -6,18 +6,7 @@ using System.Threading.Tasks;
 
 namespace IPI.Zajecia1
 {
-    class ZajeciaInne
-    {
-        public string Nazwa { get; set; }
-        public string Prowadzacy { get; set; }
-        public string Sala { get; set; }
-
-        public ZajeciaInne(string nazwa, string sala)
-        {
-            Nazwa = nazwa;
-            Sala = sala;
-        }
-    }
+  
     class Zajecia
     {
         public string Nazwa { get; set; }
@@ -27,11 +16,19 @@ namespace IPI.Zajecia1
         public TimeSpan Dlugosc { get; set; }
         public DateTime GodzinaRozpoczecia { get; set; }
 
+        public DateTime GodzinaZakonczenia
+        {
+            get {
+                return GodzinaRozpoczecia.
+                    AddTicks(Dlugosc.Ticks);
+            }
+        }
         public void WypiszZajecia()
         {
             Console.WriteLine("Nazwa: " + Nazwa);
             Console.WriteLine("Sala: " + Sala);
             Console.WriteLine("Godzina rozpoczęcia: " + GodzinaRozpoczecia);
+            Console.WriteLine("Godzina zakończenia: " + GodzinaZakonczenia);
         }
     }
 }
