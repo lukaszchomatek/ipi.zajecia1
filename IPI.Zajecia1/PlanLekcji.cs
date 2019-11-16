@@ -34,6 +34,9 @@ namespace IPI.Zajecia1
 
             wprowadzenieDoVS.WypiszZajecia();
             wprowadzenieDoVSCz2.WypiszZajecia();
+
+            Zajecia zajecia3 = Zajecia.WczytajDaneZajec();
+            zajecia3.WypiszZajecia();
             Console.ReadKey();
         }
     }

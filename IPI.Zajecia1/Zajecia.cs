@@ -52,8 +52,10 @@ namespace IPI.Zajecia1
             int hour = int.Parse(godzinaRozpoczecia.Split(':')[0]);
             int minute = int.Parse(godzinaRozpoczecia.Split(':')[1]);
 
-            noweZajecia.GodzinaRozpoczecia.AddHours(hour);
-            noweZajecia.GodzinaRozpoczecia.AddMinutes(minute);
+            noweZajecia.GodzinaRozpoczecia =
+                noweZajecia.GodzinaRozpoczecia.AddHours(hour);
+            noweZajecia.GodzinaRozpoczecia =
+                noweZajecia.GodzinaRozpoczecia.AddMinutes(minute);
 
             hour = int.Parse(czasTrwania.Split(':')[0]);
             minute = int.Parse(czasTrwania.Split(':')[1]);
