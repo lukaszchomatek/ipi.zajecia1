@@ -10,6 +10,8 @@ namespace IPI.Zajecia1
     {
         static void Main(string[] args)
         {
+            List<Zajecia> kolekcjaZajec = new List<Zajecia>();
+
             Zajecia wprowadzenieDoVS = new Zajecia();
             wprowadzenieDoVS.CzyEgzamin = true;
             wprowadzenieDoVS.Prowadzacy = "Lukasz Chomatek";
@@ -32,12 +34,30 @@ namespace IPI.Zajecia1
                         new DateTime(2019, 11, 16, 13, 15, 0)
                 };
 
-            wprowadzenieDoVS.WypiszZajecia();
-            wprowadzenieDoVSCz2.WypiszZajecia();
+            kolekcjaZajec.Add(wprowadzenieDoVS);
+            kolekcjaZajec.Add(wprowadzenieDoVSCz2);
 
-            Zajecia zajecia3 = Zajecia.WczytajDaneZajec();
-            zajecia3.WypiszZajecia();
-            Console.ReadKey();
+            //WyswietlWszystkieZajeciaZKolekcji(kolekcjaZajec);
+
+            ConsoleKey userInput = ConsoleKey.Enter;
+            while(userInput != ConsoleKey.Escape)
+            {
+                // kod do wprowadzenia zajęć
+                Zajecia noweZajecia = Zajecia.WczytajDaneZajec();
+                kolekcjaZajec.Add(noweZajecia);
+                // kod do wyświetlenia zajęć
+                WyswietlWszystkieZajeciaZKolekcji(kolekcjaZajec);
+                Console.WriteLine("Czy chcesz dodać kolejne zajęcia? (Esc - wyjście)");
+                userInput = Console.ReadKey().Key;
+            }
+        }
+
+        private static void WyswietlWszystkieZajeciaZKolekcji(List<Zajecia> kolekcjaZajec)
+        {
+            foreach (Zajecia pojedynczeZajecia in kolekcjaZajec)
+            {
+                pojedynczeZajecia.WypiszZajecia();
+            }
         }
     }
 }
