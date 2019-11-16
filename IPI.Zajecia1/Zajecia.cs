@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IPI.Zajecia1
 {
   
-    class Zajecia
+    class Zajecia : IComparable
     {
         public string Nazwa { get; set; }
         public string Prowadzacy { get; set; }
@@ -62,6 +62,36 @@ namespace IPI.Zajecia1
 
             noweZajecia.Dlugosc = new TimeSpan(hour, minute, 0);
             return noweZajecia;
+        }
+
+        public int CompareTo(object obj)
+        {
+            Zajecia inneZajecia = (Zajecia)obj;
+            return Nazwa.CompareTo(inneZajecia.Nazwa);
+        }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            Zajecia inneZajecia = (Zajecia)obj;
+            return Sala.Equals(inneZajecia.Sala) &&
+                Prowadzacy.Equals(inneZajecia.Prowadzacy) &&
+                Nazwa.Equals(inneZajecia.Nazwa) &&
+                GodzinaRozpoczecia.Equals(inneZajecia.GodzinaRozpoczecia) &&
+                GodzinaZakonczenia.Equals(inneZajecia.GodzinaZakonczenia);
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            // TODO: write your implementation of GetHashCode() here
+            throw new NotImplementedException();
+            return base.GetHashCode();
         }
     }
 }

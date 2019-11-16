@@ -25,7 +25,7 @@ namespace IPI.Zajecia1
             Zajecia wprowadzenieDoVSCz2 =
                 new Zajecia()
                 {
-                    Nazwa = "Wprowadzenie do VS i języka C#",
+                    Nazwa = "Wyprowadzenie z VS i języka C#",
                     CzyEgzamin = true,
                     Prowadzacy = "Lukasz Chomatek",
                     Sala = "2",
@@ -34,12 +34,61 @@ namespace IPI.Zajecia1
                         new DateTime(2019, 11, 16, 13, 15, 0)
                 };
 
+            Zajecia wprowadzenieDoLINQ =
+                new Zajecia()
+                {
+                    Nazwa = "Metodyka LINQ",
+                    CzyEgzamin = true,
+                    Prowadzacy = "Lukasz Chomatek",
+                    Sala = "2",
+                    Dlugosc = new TimeSpan(3, 15, 0),
+                    GodzinaRozpoczecia =
+                        new DateTime(2019, 11, 16, 13, 15, 0)
+                };
+
+            Zajecia wprowadzenieDoLINQKopia =
+                new Zajecia()
+                {
+                    Nazwa = "Metodyka LINQ",
+                    CzyEgzamin = true,
+                    Prowadzacy = "Lukasz Chomatek",
+                    Sala = "2",
+                    Dlugosc = new TimeSpan(3, 15, 0),
+                    GodzinaRozpoczecia =
+                        new DateTime(2019, 11, 16, 13, 15, 0)
+                };
             kolekcjaZajec.Add(wprowadzenieDoVS);
             kolekcjaZajec.Add(wprowadzenieDoVSCz2);
+            kolekcjaZajec.Add(wprowadzenieDoLINQ);
 
+            for (int i = 3; i < 100; i++)
+            {
+                Zajecia noweZajecia =
+                new Zajecia()
+                {
+                    Nazwa = "Metodyka LINQ",
+                    CzyEgzamin = true,
+                    Prowadzacy = "Lukasz Chomatek",
+                    Sala = i.ToString(),
+                    Dlugosc = new TimeSpan(3, 15, 0),
+                    GodzinaRozpoczecia =
+                        new DateTime(2019, 11, 16, 13, 15, 0)
+                };
+                //kolekcjaZajec.Add(noweZajecia);
+            }
+            kolekcjaZajec.Sort();
+
+            bool czyZawieraLINQ = kolekcjaZajec.Contains(wprowadzenieDoLINQ);
+            bool czyZawieraKopie = kolekcjaZajec.Contains(wprowadzenieDoLINQKopia);
+            WyswietlWszystkieZajeciaZKolekcji(kolekcjaZajec);
+            Console.WriteLine(czyZawieraLINQ);
+            Console.WriteLine(czyZawieraKopie);
+
+
+            Console.ReadKey();
             //WyswietlWszystkieZajeciaZKolekcji(kolekcjaZajec);
 
-            ConsoleKey userInput = ConsoleKey.Enter;
+            /*ConsoleKey userInput = ConsoleKey.Enter;
             while(userInput != ConsoleKey.Escape)
             {
                 // kod do wprowadzenia zajęć
@@ -49,7 +98,7 @@ namespace IPI.Zajecia1
                 WyswietlWszystkieZajeciaZKolekcji(kolekcjaZajec);
                 Console.WriteLine("Czy chcesz dodać kolejne zajęcia? (Esc - wyjście)");
                 userInput = Console.ReadKey().Key;
-            }
+            }*/
         }
 
         private static void WyswietlWszystkieZajeciaZKolekcji(List<Zajecia> kolekcjaZajec)
